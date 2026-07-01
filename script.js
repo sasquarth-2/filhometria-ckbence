@@ -117,6 +117,7 @@ function renderLeaderboard() {
 function getEmojiForType(type) {
   const normType = type.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
   if (normType.includes('pet') || normType.includes('cao') || normType.includes('gato') || normType.includes('animal')) return '🐾';
+  if (normType.includes('galinha') || normType.includes('frango')) return '🐔';
   if (normType.includes('maquina') || normType.includes('console') || normType.includes('pc') || normType.includes('computador') || normType.includes('tech')) return '🤖';
   if (normType.includes('eletro') || normType.includes('aspirador') || normType.includes('microondas') || normType.includes('geladeira')) return '🔌';
   if (normType.includes('planta') || normType.includes('cacto') || normType.includes('flor') || normType.includes('arvore')) return '🌱';
