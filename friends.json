@@ -165,6 +165,11 @@
         "id": "c28",
         "name": "+1000000 não informados",
         "type": "Gato"
+      },
+      {
+        "id": "c29",
+        "name": "+1000000 Frangos menegon",
+        "type": "Galinha"
       }
     ]
   },
