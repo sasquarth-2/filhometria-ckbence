@@ -16,7 +16,7 @@
       },
       {
         "id": "t3",
-        "name": "Gato qualquer",
+        "name": "Bisteca",
         "type": "Gato"
       }
     ]
@@ -210,8 +210,8 @@
       },
       {
         "id": "m5",
-        "name": "🐸",
-        "type": "pet"
+        "name": " ",
+        "type": "Sapo"
       }
     ]
   },
@@ -269,22 +269,22 @@
       {
         "id": "c1",
         "name": " ",
-        "type": "Gato"
+        "type": "Cachorro"
       },
       {
         "id": "c2",
         "name": " ",
-        "type": "Gato"
+        "type": "Cachorro"
       },
       {
         "id": "c3",
         "name": " ",
-        "type": "Gato"
+        "type": "Cachorro"
       },
       {
         "id": "c4",
         "name": " ",
-        "type": "Gato"
+        "type": "Cachorro"
       },
       {
         "id": "c5",
