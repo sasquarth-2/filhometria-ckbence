@@ -40,9 +40,24 @@ function renderLeaderboard() {
   
   // Sort friends by number of children descending
   // If tied, sort alphabetically by name
+  // Special rule: if a child is named 'castrado', it counts as -1 children!
+  const getEffectiveChildCount = (friend) => {
+    if (!friend.children) return 0;
+    let count = 0;
+    friend.children.forEach(child => {
+      const name = (typeof child === 'string' ? child : child.name).toLowerCase();
+      if (name.includes('castrado') || name.includes('vasectomia')) {
+        count -= 1;
+      } else {
+        count += 1;
+      }
+    });
+    return count;
+  };
+
   friendsData.sort((a, b) => {
-    const lenA = a.children ? a.children.length : 0;
-    const lenB = b.children ? b.children.length : 0;
+    const lenA = getEffectiveChildCount(a);
+    const lenB = getEffectiveChildCount(b);
     if (lenB !== lenA) {
       return lenB - lenA;
     }
@@ -54,12 +69,13 @@ function renderLeaderboard() {
 
   friendsData.forEach((friend, index) => {
     const rank = index + 1;
-    const childCount = friend.children ? friend.children.length : 0;
-    totalChildren += childCount;
+    const childCount = getEffectiveChildCount(friend);
+    totalChildren += (friend.children ? friend.children.length : 0); // actual array length for stats
     
     // Create card element
+    const isNegative = childCount < 0;
     const card = document.createElement('div');
-    card.className = `friend-card rank-${rank}`;
+    card.className = `friend-card rank-${rank} ${isNegative ? 'negative-rank' : ''}`;
     card.setAttribute('data-id', friend.id || index);
     
     // Set emoji/badge based on type of child
@@ -92,12 +108,19 @@ function renderLeaderboard() {
           <div class="rank-badge-overlay">${rank}</div>
          </div>`;
 
+    let countText = '';
+    if (childCount < 0) {
+      countText = `${childCount} (Dívida de Herdeiro ✂️)`;
+    } else {
+      countText = `${childCount} ${childCount === 1 ? 'filho' : 'filhos'}`;
+    }
+
     card.innerHTML = `
       ${photoHtml}
       <div class="friend-info">
         <div class="friend-meta">
           <span class="friend-name">${friend.name}</span>
-          <span class="children-count">${childCount} ${childCount === 1 ? 'filho' : 'filhos'}</span>
+          <span class="children-count" style="${isNegative ? 'background: rgba(239, 68, 68, 0.15); border-color: rgba(239, 68, 68, 0.3); color: #ef4444;' : ''}">${countText}</span>
         </div>
         <div class="children-container">
           ${badgesHtml}
@@ -125,6 +148,7 @@ function getEmojiForType(type) {
   if (normType.includes('eletro') || normType.includes('aspirador') || normType.includes('microondas') || normType.includes('geladeira')) return '🔌';
   if (normType.includes('planta') || normType.includes('cacto') || normType.includes('flor') || normType.includes('arvore')) return '🌱';
   if (normType.includes('carro') || normType.includes('veiculo') || normType.includes('moto') || normType.includes('bike')) return '🚗';
+  if (normType.includes('castrado') || normType.includes('vasectomia') || normType === '') return '✂️';
   if (normType.includes('humano') || normType.includes('pessoa') || normType.includes('bebe')) return '👶';
   return '🎒';
 }

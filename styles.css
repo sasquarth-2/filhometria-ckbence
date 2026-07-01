@@ -290,6 +290,34 @@ body {
 .rank-2 { border-color: rgba(226, 232, 240, 0.15); }
 .rank-3 { border-color: rgba(180, 83, 9, 0.15); }
 
+/* Styling for negative ranks / vasectomy jokes */
+.negative-rank {
+  opacity: 0.75;
+  filter: grayscale(0.2);
+  border-color: rgba(239, 68, 68, 0.15) !important;
+}
+
+.negative-rank:hover {
+  opacity: 0.95;
+  border-color: rgba(239, 68, 68, 0.4) !important;
+}
+
+.negative-rank .profile-placeholder {
+  background: linear-gradient(135deg, #475569 0%, #1e293b 100%);
+}
+
+.negative-rank .rank-badge-overlay {
+  background: #ef4444;
+  color: white;
+  box-shadow: 0 0 8px rgba(239, 68, 68, 0.5);
+}
+
+.negative-rank .child-badge {
+  border-color: rgba(239, 68, 68, 0.2) !important;
+  color: #ef4444 !important;
+  background: rgba(239, 68, 68, 0.05) !important;
+}
+
 /* Friend Details */
 .friend-info {
   flex-grow: 1;
