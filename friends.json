@@ -366,5 +366,18 @@
         "type": ""
       }
     ]
+  },
+  ,
+  {
+    "id": "10",
+    "name": "Tunico",
+    "photo": "IMG/sas.png",
+    "children": [
+      {
+        "id": "r1",
+        "name": " ",
+        "type": "Humano"
+      }
+    ]
   }
 ]
