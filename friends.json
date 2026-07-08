@@ -376,6 +376,11 @@
         "id": "r1",
         "name": " ",
         "type": "Humano"
+      },
+      {
+        "id": "r2",
+        "name": " ",
+        "type": "Cachorro"
       }
     ]
   }
